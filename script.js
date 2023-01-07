@@ -106,9 +106,23 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+// Function to prompt for password input
+function getPasswordLength() {
+  var passwordLength = prompt("Please select the required length of the password", "10 - 64");
+  if (passwordLength >= 10 && passwordLength <= 64) {
+    getPasswordOptions()
+  }
+
+  else
+    alert("Please see resource: 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
+    getPasswordLength()
+  
+}
+
+
 // Function to prompt user for password options
 function getPasswordOptions() {
-
+alert("test")
 }
 
 // Function for getting a random element from an array
