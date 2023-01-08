@@ -107,8 +107,12 @@ var upperCasedCharacters = [
 ];
 
 var passGen = []
+var allCharacters = { 
+  characterSet: [specialCharacters, numericCharacters, upperCasedCharacters, lowerCasedCharacters],
+  promptName: ["special", "numeric", "lower", "upper"]
 
-console.log(upperCasedCharacters);
+
+}
 
 // Function to prompt for password input
 function getPasswordLength() {
@@ -117,62 +121,85 @@ function getPasswordLength() {
   var passwordLength = prompt("Please select the required length of the password", "10 - 64");
   if (passwordLength >= 10 && passwordLength <= 64) {
     console.log(passwordLength);
-    specialCharactersFunction()
-    numericCharactersFunction()
-    lowerCasedCharactersFunction()
-    upperCasedCharactersFunction()
+    getPasswordOptions()
   }
   else
   alert("Please google 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
   getPasswordLength()
 }
 
-
-
-function specialCharactersFunction() {
-  let text = "Does your password require special characters?\nOk for yes, Cancel for no.";
-  if (confirm(text) == true) {
-     // move selected to arr
-    passGen = passGen.concat(specialCharacters);
+// Function to prompt user for password options
+function getPasswordOptions() {
+  for (var i = 0; i < allCharacters.characterSet.length; i++) {
+    var text = "Does your password require " + allCharacters.promptName[i] + " characters?\nOk for yes, Cancel for no.";
+    if (confirm(text) == true) {
+    passGen = passGen.concat(allCharacters.characterSet[i]);
     console.log(passGen);
+    }
   }
 }
 
 
-function numericCharactersFunction() {
-  let text = "Does your password require numeric characters?\nOk for yes, Cancel for no.";
-  if (confirm(text) == true) {
-    // move selected to arr
-    passGen = passGen.concat(numericCharacters);
-    console.log(passGen);
-  }
-}
-
-function lowerCasedCharactersFunction() {
-  let text = "Does your password require lower cased characters?\nOk for yes, Cancel for no.";
-  if (confirm(text) == true) {
-    // move selected to arr
-    passGen = passGen.concat(lowerCasedCharacters);
-    console.log(passGen);
-  }
-}
-
-function upperCasedCharactersFunction() {
-  let text = "Does your password require upper cased characters?\nOk for yes, Cancel for no.";
-  if (confirm(text) == true) {
-    // move selected to arr
-    passGen = passGen.concat(upperCasedCharacters);
-    console.log(passGen);
-  }
-}
+// specialCharactersFunction();
+// numericCharactersFunction();
+// lowerCasedCharactersFunction();
+// upperCasedCharactersFunction();
 
 
+// function specialCharactersFunction() {
+  //   let text = "Does your password require special characters?\nOk for yes, Cancel for no.";
+//   if (confirm(text) == true) {
+//      // move selected to arr
+//     passGen = passGen.concat(specialCharacters);
+//     console.log(passGen);
+//   }
+
+// }
+
+
+// function numericCharactersFunction() {
+//   let text = "Does your password require numeric characters?\nOk for yes, Cancel for no.";
+//   if (confirm(text) == true) {
+//     // move selected to arr
+//     passGen = passGen.concat(numericCharacters);
+//     console.log(passGen);
+//   }
+// }
+
+// function lowerCasedCharactersFunction() {
+//   let text = "Does your password require lower cased characters?\nOk for yes, Cancel for no.";
+//   if (confirm(text) == true) {
+//     // move selected to arr
+//     passGen = passGen.concat(lowerCasedCharacters);
+//     console.log(passGen);
+//   }
+// }
+
+// function upperCasedCharactersFunction() {
+//   let text = "Does your password require upper cased characters?\nOk for yes, Cancel for no.";
+//   if (confirm(text) == true) {
+//     // move selected to arr
+//     passGen = passGen.concat(upperCasedCharacters);
+//     console.log(passGen);
+//   }
+//   else alert ("you must select at least one type of character")
+// }
+
+//• Need to have a way to alert character select if none are selected
+
+// if (specialCharactersFunction() == false) {
+//   alert ("you must select at least one type of character")
+  
+// }
+
+  // else alert ("you must select at least one type of character")
 
 
 
 
 // Function for getting a random element from an array
 function getRandom(arr) {
+  
 
 }
 
