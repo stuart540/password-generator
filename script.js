@@ -112,33 +112,35 @@ console.log(upperCasedCharacters);
 function getPasswordLength() {
   var passwordLength = prompt("Please select the required length of the password", "10 - 64");
   if (passwordLength >= 10 && passwordLength <= 64) {
+    console.log(passwordLength);
     specialCharactersFunction()
     numericCharactersFunction()
     lowerCasedCharactersFunction()
     upperCasedCharactersFunction()
   }
-    else
-      alert("Please google 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
-      getPasswordLength()
-  }
-
-// Function to prompt user for password options
-function getPasswordOptions() {
-  
-  
+  else
+  alert("Please google 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
+  getPasswordLength()
 }
+
+var passGen = []
 
 function specialCharactersFunction() {
   let text = "Does your password require special characters?\nOk for yes, Cancel for no.";
   if (confirm(text) == true) {
-    // move selected to arr
+     // move selected to arr
+    passGen = passGen.concat(specialCharacters);
+    console.log(passGen);
   }
 }
+
 
 function numericCharactersFunction() {
   let text = "Does your password require numeric characters?\nOk for yes, Cancel for no.";
   if (confirm(text) == true) {
     // move selected to arr
+    passGen = passGen.concat(numericCharacters);
+    console.log(passGen);
   }
 }
 
@@ -146,6 +148,8 @@ function lowerCasedCharactersFunction() {
   let text = "Does your password require lower cased characters?\nOk for yes, Cancel for no.";
   if (confirm(text) == true) {
     // move selected to arr
+    passGen = passGen.concat(lowerCasedCharacters);
+    console.log(passGen);
   }
 }
 
@@ -153,8 +157,14 @@ function upperCasedCharactersFunction() {
   let text = "Does your password require upper cased characters?\nOk for yes, Cancel for no.";
   if (confirm(text) == true) {
     // move selected to arr
+    passGen = passGen.concat(upperCasedCharacters);
+    console.log(passGen);
   }
 }
+
+
+
+
 
 
 // Function for getting a random element from an array
