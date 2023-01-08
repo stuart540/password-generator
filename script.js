@@ -106,10 +106,14 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+var passGen = []
+
 console.log(upperCasedCharacters);
 
 // Function to prompt for password input
 function getPasswordLength() {
+  // need to clear array with each click of button
+  passGen.length = 0;
   var passwordLength = prompt("Please select the required length of the password", "10 - 64");
   if (passwordLength >= 10 && passwordLength <= 64) {
     console.log(passwordLength);
@@ -123,7 +127,7 @@ function getPasswordLength() {
   getPasswordLength()
 }
 
-var passGen = []
+
 
 function specialCharactersFunction() {
   let text = "Does your password require special characters?\nOk for yes, Cancel for no.";
@@ -189,4 +193,5 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+generateBtn.addEventListener('click', writePassword); 
+
