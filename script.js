@@ -106,24 +106,56 @@ var upperCasedCharacters = [
   'Z'
 ];
 
+console.log(upperCasedCharacters);
+
 // Function to prompt for password input
 function getPasswordLength() {
   var passwordLength = prompt("Please select the required length of the password", "10 - 64");
   if (passwordLength >= 10 && passwordLength <= 64) {
-    getPasswordOptions()
+    specialCharactersFunction()
+    numericCharactersFunction()
+    lowerCasedCharactersFunction()
+    upperCasedCharactersFunction()
   }
-
-  else
-    alert("Please see resource: 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
-    getPasswordLength()
-  
-}
-
+    else
+      alert("Please google 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
+      getPasswordLength()
+  }
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-alert("test")
+  
+  
 }
+
+function specialCharactersFunction() {
+  let text = "Does your password require special characters?\nOk for yes, Cancel for no.";
+  if (confirm(text) == true) {
+    // move selected to arr
+  }
+}
+
+function numericCharactersFunction() {
+  let text = "Does your password require numeric characters?\nOk for yes, Cancel for no.";
+  if (confirm(text) == true) {
+    // move selected to arr
+  }
+}
+
+function lowerCasedCharactersFunction() {
+  let text = "Does your password require lower cased characters?\nOk for yes, Cancel for no.";
+  if (confirm(text) == true) {
+    // move selected to arr
+  }
+}
+
+function upperCasedCharactersFunction() {
+  let text = "Does your password require upper cased characters?\nOk for yes, Cancel for no.";
+  if (confirm(text) == true) {
+    // move selected to arr
+  }
+}
+
 
 // Function for getting a random element from an array
 function getRandom(arr) {
