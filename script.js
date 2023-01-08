@@ -111,14 +111,13 @@ var allCharacters = {
   characterSet: [specialCharacters, numericCharacters, upperCasedCharacters, lowerCasedCharacters],
   promptName: ["special", "numeric", "lower", "upper"]
 
-
 }
 
 // Function to prompt for password input
 function getPasswordLength() {
-  // need to clear array with each click of button
+  // to clear array with each click of button
   passGen.length = 0;
-  var passwordLength = prompt("Please select the required length of the password", "10 - 64");
+  var passwordLength = parseInt(prompt("Please select the required length of the password", "10 - 64"));
   if (passwordLength >= 10 && passwordLength <= 64) {
     console.log(passwordLength);
     getPasswordOptions()
@@ -134,8 +133,9 @@ function getPasswordOptions() {
     var text = "Does your password require " + allCharacters.promptName[i] + " characters?\nOk for yes, Cancel for no.";
     if (confirm(text) == true) {
     passGen = passGen.concat(allCharacters.characterSet[i]);
-    console.log(passGen);
+    console.log(passGen[i]);
     }
+    // else count, if reaches 4 then alert?
   }
 }
 
@@ -199,7 +199,7 @@ function getPasswordOptions() {
 
 // Function for getting a random element from an array
 function getRandom(arr) {
-  
+  var x = Math.floor((Math.random() * passGen.length) + 1);
 
 }
 
