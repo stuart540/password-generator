@@ -106,17 +106,19 @@ var upperCasedCharacters = [
   'Z'
 ];
 
-var passGen = []
-var allCharacters = { 
+var generatorArr = []
+var values = { 
   characterSet: [specialCharacters, numericCharacters, upperCasedCharacters, lowerCasedCharacters],
   promptName: ["special", "numeric", "lower", "upper"]
 
 }
 
+console.log(values.characterSet.length - 1); 
+
 // Function to prompt for password input
 function getPasswordLength() {
   // to clear array with each click of button
-  passGen.length = 0;
+  generatorArr.length = 0;
   var passwordLength = parseInt(prompt("Please select the required length of the password", "10 - 64"));
   if (passwordLength >= 10 && passwordLength <= 64) {
     console.log(passwordLength);
@@ -129,16 +131,32 @@ function getPasswordLength() {
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  for (var i = 0; i < allCharacters.characterSet.length; i++) {
-    var text = "Does your password require " + allCharacters.promptName[i] + " characters?\nOk for yes, Cancel for no.";
+  for (var i = 0; i < values.characterSet.length; i++) {
+    var text = "Does your password require " + values.promptName[i] + " characters?\nOk for yes, Cancel for no.";
     if (confirm(text) == true) {
-    passGen = passGen.concat(allCharacters.characterSet[i]);
-    console.log(passGen[i]);
+    generatorArr = generatorArr.concat(values.characterSet[i]);
+    
     }
-    // else count, if reaches 4 then alert?
-  }
-}
+    
+    if ([i] == values.characterSet.length - 1 && generatorArr.length !== 0) {
+      alert("Making password... this may take a while");
+      alert("Seriously, you should probably make a coffee and come back in 5");
 
+      // randomCharacter(generatorArr)
+    }
+
+    else if ([i] == values.characterSet.length - 1 && generatorArr.length === 0) {
+      alert("you must select at least one type of character");
+      getPasswordOptions()
+    }
+
+      console.log(generatorArr);
+      
+      // else count, if reaches 4 then alert?
+    
+  }
+
+}
 
 // specialCharactersFunction();
 // numericCharactersFunction();
@@ -150,8 +168,8 @@ function getPasswordOptions() {
   //   let text = "Does your password require special characters?\nOk for yes, Cancel for no.";
 //   if (confirm(text) == true) {
 //      // move selected to arr
-//     passGen = passGen.concat(specialCharacters);
-//     console.log(passGen);
+//     generatorArr = generatorArr.concat(specialCharacters);
+//     console.log(generatorArr);
 //   }
 
 // }
@@ -161,8 +179,8 @@ function getPasswordOptions() {
 //   let text = "Does your password require numeric characters?\nOk for yes, Cancel for no.";
 //   if (confirm(text) == true) {
 //     // move selected to arr
-//     passGen = passGen.concat(numericCharacters);
-//     console.log(passGen);
+//     generatorArr = generatorArr.concat(numericCharacters);
+//     console.log(generatorArr);
 //   }
 // }
 
@@ -170,8 +188,8 @@ function getPasswordOptions() {
 //   let text = "Does your password require lower cased characters?\nOk for yes, Cancel for no.";
 //   if (confirm(text) == true) {
 //     // move selected to arr
-//     passGen = passGen.concat(lowerCasedCharacters);
-//     console.log(passGen);
+//     generatorArr = generatorArr.concat(lowerCasedCharacters);
+//     console.log(generatorArr);
 //   }
 // }
 
@@ -179,8 +197,8 @@ function getPasswordOptions() {
 //   let text = "Does your password require upper cased characters?\nOk for yes, Cancel for no.";
 //   if (confirm(text) == true) {
 //     // move selected to arr
-//     passGen = passGen.concat(upperCasedCharacters);
-//     console.log(passGen);
+//     generatorArr = generatorArr.concat(upperCasedCharacters);
+//     console.log(generatorArr);
 //   }
 //   else alert ("you must select at least one type of character")
 // }
@@ -198,10 +216,26 @@ function getPasswordOptions() {
 
 
 // Function for getting a random element from an array
-function getRandom(arr) {
-  var x = Math.floor((Math.random() * passGen.length) + 1);
+// function getRandom(arr) {
+//   for (let j = 0; j < passwordLength.length; j++) {
+//     passwordFinal = generatorArr.push(generatorArr[j]);
+//     console.log(passwordFinal);
+    
+//   }
+//   var x = Math.floor((Math.random() * passwordLength.length) + 1);
 
-}
+// }
+
+// getRandom()
+
+
+//   function randomCharacter(generatorArr) {
+    
+//   return generatorArr[Math.floor(Math.random()*generatorArr.length)];
+      
+//   } {
+//   console.log(randomCharacter());
+// }
 
 // Function to generate password with user input
 function generatePassword() {
@@ -220,5 +254,4 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword); 
-
+generateBtn.addEventListener('click', writePassword);
