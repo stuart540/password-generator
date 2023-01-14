@@ -1,6 +1,6 @@
 // User story: I want to ba able to generate a random password with the flexibility to select variables of length and complexity from an easy to use interface.
 
-// As a developer I want to create a password generator with easy to understand code, preferable modular to improve readability and allow for modifications.
+// As a developer I want to create a password generator with easy to understand code, preferably modular to improve readability and allow for modifications in the future.
 
 // * Parameters of the password length are between 10 and 64 characters - Check for this at the end?
 // * Password must have options for selecting; Special characters, Numeric characters, Uppercase and Lowercase characters
@@ -108,28 +108,30 @@ var upperCasedCharacters = [
 
 var generatorArr = []
 var randomArr = []
-var passwordInt = 0
+// var passwordInt = 0
+var randomCharacter = ""
 var values = { 
   characterSet: [specialCharacters, numericCharacters, upperCasedCharacters, lowerCasedCharacters],
   promptName: ["special", "numeric", "lower", "upper"]
   
 }
-// arr[Math.floor(Math.random() * arr.length)];
 
+// Function for getting a random character from an array
+var getRandom = function(arr) {
+  var randomNumber = Math.floor((Math.random() * arr.length));
+  randomCharacter = arr[randomNumber];
+    }
+    getRandom(upperCasedCharacters)
+    console.log(randomCharacter);
+  // }
 // Function to generate password with user input
-function generatePassword() {
-  var passwordLength = parseInt(prompt("Please select the required length of the password", "10 - 64"));
-  getPasswordLength()
-  // var randomCharacter = function(arr) {
-  //   for (let j = 0; j < passwordLength.length; j++) {
-  //     var randomArr = randomArr[j];
-      
-  //   }
-    
-  // } 
+// function generatePassword() {
+  // getPasswordLength()
+  
   
   // Function to prompt for password input
   function getPasswordLength() {
+    var passwordLength = parseInt(prompt("Please select the required length of the password", "10 - 64"));
     // to clear array with each click of button
     generatorArr.length = 0;
     if (passwordLength >= 10 && passwordLength <= 64) {
@@ -137,13 +139,14 @@ function generatePassword() {
       getPasswordOptions()
     }
     
-    else
+    else {
     alert("Please google 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
     generatePassword()
+    }
+    console.log(passwordLength);
     
   }
   
-  console.log(passwordLength);
   // Function to prompt user for password options
   function getPasswordOptions() {
     for (var i = 0; i < values.characterSet.length; i++) {
@@ -157,9 +160,10 @@ function generatePassword() {
         alert("Making password... this may take a while");
         alert("Seriously, you should probably make a coffee and come back in 5");
         
-        randomCharacter(generatorArr) //?maybe char.length here?
+        getRandom(generatorArr)
+        // randomCharacter(generatorArr) //?maybe char.length here?
         console.log(generatorArr);
-        console.log(randomCharacter);
+        // console.log(randomCharacter);
         
       }
 
@@ -233,34 +237,29 @@ function generatePassword() {
 
 
 
-  // Function for getting a random element from an array
-  function getRandom(arr) {
-    for (let j = 0; j < passwordLength.length; j++) {
-      passwordFinal = generatorArr.push(generatorArr[j]);
-      console.log(passwordFinal);
+
+
+// }
+// arr[Math.floor(Math.random() * arr.length)];
+
+ // var randomCharacter = function(arr) {
+  //   for (let j = 0; j < passwordLength.length; j++) {
+  //     var randomArr = randomArr[j];
       
-    }
-    var x = Math.floor((Math.random() * passwordLength.length) + 1);
-
-  }
-
-  getRandom()
-
-}
-
-
-
+  //   }
+    
+  // } 
 
 // Get references to the #generate element
-var generateBtn = document.querySelector('#generate');
+//!var generateBtn = document.querySelector('#generate');
 
 // Write password to the #password input
-function writePassword() {
-  var password = generatePassword();
-  var passwordText = document.querySelector('#password');
+//! function writePassword() {
+//   var password = generatePassword();
+//   var passwordText = document.querySelector('#password');
 
-  passwordText.value = password;
-}
+//   passwordText.value = password;
+// }
 
 // Add event listener to generate button
-generateBtn.addEventListener('click', writePassword);
+// !generateBtn.addEventListener('click', writePassword);
