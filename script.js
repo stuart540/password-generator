@@ -107,51 +107,68 @@ var upperCasedCharacters = [
 ];
 
 var generatorArr = []
-var randomArr = []
-// var passwordInt = 0
-var randomCharacter = ""
+var randomCharacter = []
+var passwordOne = ""
+var passwordLength = null
 var values = { 
   characterSet: [specialCharacters, numericCharacters, upperCasedCharacters, lowerCasedCharacters],
   promptName: ["special", "numeric", "lower", "upper"]
   
 }
 
+
+
 // Function for getting a random character from an array
 var getRandom = function(arr) {
-  var randomNumber = Math.floor((Math.random() * arr.length));
-  randomCharacter = arr[randomNumber];
+  console.log(arr.length);
+  return arr = [Math.floor(Math.random() * arr.length)];
     }
-    getRandom(upperCasedCharacters)
-    console.log(randomCharacter);
+    // getRandom(upperCasedCharacters)
+    // console.log(arr);
+
   // }
+// var randomGenerator = function(arr) {
+  // for (var i = 0; i < passwordLength; i++) {
+  //   console.log(passwordOne += getRandom(generatorArr));
+    // return passwordOne
+    
+  // }
+// }
+
+// randomGenerator(upperCasedCharacters)
+// console.log(passwordOne);
+
 // Function to generate password with user input
 // function generatePassword() {
   // getPasswordLength()
-  
+    
   
   // Function to prompt for password input
   function getPasswordLength() {
-    var passwordLength = parseInt(prompt("Please select the required length of the password", "10 - 64"));
+    var passwordLength = parseInt(prompt("Please select the required length of the password, or leave blank to set to the default of 10", "10 - 64"));
     // to clear array with each click of button
     generatorArr.length = 0;
     if (passwordLength >= 10 && passwordLength <= 64) {
       
-      getPasswordOptions()
+      console.log(passwordLength);
+      getPasswordOptions(passwordLength)
+      return passwordLength
     }
     
     else {
     alert("Please google 'how to count above 10 with socks on', then try again with a number between 10 and 64 inclusive.");
     generatePassword()
     }
-    console.log(passwordLength);
     
   }
   
+  
   // Function to prompt user for password options
-  function getPasswordOptions() {
+  function getPasswordOptions(num) {
+    console.log(num);
     for (var i = 0; i < values.characterSet.length; i++) {
       var text = "Does your password require " + values.promptName[i] + " characters?\nOk for yes, Cancel for no.";
-      if (confirm(text) == true) {
+      if (confirm(text)) {
       generatorArr = generatorArr.concat(values.characterSet[i]);
       
       }
@@ -159,96 +176,30 @@ var getRandom = function(arr) {
       if ([i] == values.characterSet.length - 1 && generatorArr.length !== 0) {
         alert("Making password... this may take a while");
         alert("Seriously, you should probably make a coffee and come back in 5");
-        
-        getRandom(generatorArr)
-        // randomCharacter(generatorArr) //?maybe char.length here?
+        passwordOne = ""
         console.log(generatorArr);
+        console.log(num);
+        for (var i = 0; i < num; i++) {
+          passwordOne += generatorArr[getRandom(generatorArr)];
+          console.log(passwordOne);
+        }
+        return passwordOne
+        // randomGenerator(generatorArr)
+        // randomCharacter(generatorArr) //?maybe char.length here?
+        // console.log(generatorArr);
         // console.log(randomCharacter);
         
       }
 
       else if ([i] == values.characterSet.length - 1 && generatorArr.length === 0) {
-        alert("you must select at least one type of character");
+        alert("You must select at least one type of character");
         getPasswordOptions()
       }
-
-        console.log(generatorArr);
-
+      console.log(generatorArr);
+      
       
     }
   }
-
-  //? Maybe wrap everything inside a function which is called on click?
-
-  // specialCharactersFunction();
-  // numericCharactersFunction();
-  // lowerCasedCharactersFunction();
-  // upperCasedCharactersFunction();
-
-
-  // function specialCharactersFunction() {
-    //   let text = "Does your password require special characters?\nOk for yes, Cancel for no.";
-  //   if (confirm(text) == true) {
-  //      // move selected to arr
-  //     generatorArr = generatorArr.concat(specialCharacters);
-  //     console.log(generatorArr);
-  //   }
-
-  // }
-
-
-  // function numericCharactersFunction() {
-  //   let text = "Does your password require numeric characters?\nOk for yes, Cancel for no.";
-  //   if (confirm(text) == true) {
-  //     // move selected to arr
-  //     generatorArr = generatorArr.concat(numericCharacters);
-  //     console.log(generatorArr);
-  //   }
-  // }
-
-  // function lowerCasedCharactersFunction() {
-  //   let text = "Does your password require lower cased characters?\nOk for yes, Cancel for no.";
-  //   if (confirm(text) == true) {
-  //     // move selected to arr
-  //     generatorArr = generatorArr.concat(lowerCasedCharacters);
-  //     console.log(generatorArr);
-  //   }
-  // }
-
-  // function upperCasedCharactersFunction() {
-  //   let text = "Does your password require upper cased characters?\nOk for yes, Cancel for no.";
-  //   if (confirm(text) == true) {
-  //     // move selected to arr
-  //     generatorArr = generatorArr.concat(upperCasedCharacters);
-  //     console.log(generatorArr);
-  //   }
-  //   else alert ("you must select at least one type of character")
-  // }
-
-  //• Need to have a way to alert character select if none are selected
-
-  // if (specialCharactersFunction() == false) {
-  //   alert ("you must select at least one type of character")
-    
-  // }
-
-    // else alert ("you must select at least one type of character")
-
-
-
-
-
-
-// }
-// arr[Math.floor(Math.random() * arr.length)];
-
- // var randomCharacter = function(arr) {
-  //   for (let j = 0; j < passwordLength.length; j++) {
-  //     var randomArr = randomArr[j];
-      
-  //   }
-    
-  // } 
 
 // Get references to the #generate element
 //!var generateBtn = document.querySelector('#generate');
