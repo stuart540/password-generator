@@ -16,7 +16,7 @@ Please check out the deployed [JavaScript project](https://stuart540.github.io/p
 
 This page is intended to run in the browser, with all variables being obtained from prompts and confirms, before generating then displaying the password directly to the web page.
 
-![Financial analysis output to console](assets/images/password-generator.png)
+![Demonstration of password shown on the webage](assets/images/password-generator.png)
 
 ## Credits
 
